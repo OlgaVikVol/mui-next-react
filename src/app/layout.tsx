@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import { StoreProvider } from "@/lib/StoreProvider";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import { Navbar } from "@/components/Navbar/Navbar";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
+import { CssBaseline, Box } from '@mui/material';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +27,13 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <Navbar />
+          <div className="container">
+            <Sidebar />
+            <main>{children}</main>
+          </div>
+        </body>
       </html>
     </StoreProvider>
   );
